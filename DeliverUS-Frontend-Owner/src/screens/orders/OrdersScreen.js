@@ -131,6 +131,7 @@ export default function OrdersScreen ({ navigation, route }) {
             <TextRegular textStyle={styles.description}>{restaurant.restaurantCategory ? restaurant.restaurantCategory.name : ''}</TextRegular>
           </View>
         </ImageBackground>
+        {analytics!== null && renderAnalytics()}
       </View>
     )
   }
@@ -232,12 +233,7 @@ export default function OrdersScreen ({ navigation, route }) {
 
   return (
     <FlatList
-      ListHeaderComponent={() => (
-        <>
-        {renderHeader()}
-        {renderAnalytics()}
-        </>
-      )}
+      ListHeaderComponent={renderHeader}
       style={styles.container}
       keyExtractor={item => item.id.toString()}
       data={orders}
